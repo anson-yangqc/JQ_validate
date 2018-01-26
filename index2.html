@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Reg</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+    <!--    <script src="index.js"></script>-->
+    <script>
+        //封装start
+        function JQvalidate(){
+            this.message = {
+                username:"用户名不能空"
+                ,minlength:"用户名应该为3-20位之间"
+                ,phoneNumber:"请输入正确的手机号码"
+            }
+        }
+        JQvalidate.prototype.check = function(obj){
+            let {container,rules,message} = obj;
+            container.validate({
+                rules: rules,
+                messages: message
+            });
+        }
+        JQvalidate.prototype.addMethod = function(name,method,message){
+            jQuery.validator.addMethod(name, method, message);
+        }
+        //封装end
+
+        $(function() {
+            $('#send').click(function(){
+                $('#signupForm').submit();
+            })
+            var checkForm = new JQvalidate();
+            checkForm.check({
+                container:$("#signupForm")
+                ,rules:{
+                    username: {
+                        required: true,
+                        minlength: 3,
+                        maxlength: 20,
+                        isenglish: true
+                    }
+                }
+                ,message:{
+                    username: {
+                        required: checkForm.message.username,
+                        minlength: checkForm.message.minlength
+                    }
+                    ,phoneNumber: checkForm.message.phoneNumber
+                }
+            })
+            checkForm.addMethod("isenglish", function(value, element) {
+                var chrnum = /^([a-zA-Z]+)$/;
+                return this.optional(element) || (chrnum.test(value));
+            }, "只能输入字母");
+        });
+    </script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action='' method='post' id="signupForm">
+        <span class="reStar">*</span>用 户 名:
+        <input type="text" id="username" name="username" placeholder="请输入用户名"><span class="state1"><a hidden>请输入用户名</a></span>
+        <br/>
+        <br/>
+        <span class="reStar">*</span>密　　码:
+        <input type="password" id="password" name="password" placeholder="请输入密码"><span class="state1"></span>
+        <br/>
+        <br/>
+        <span class="reStar">*</span>确认密码:
+        <input type="password" id="repass" name="repass" placeholder="请输入确认密码"><span class="state1"></span>
+        <br/>
+        <br/>
+        <span style="padding-right:17px;"></span>邮　　箱:
+        <input type="text" id="email" name="email" placeholder="请输入邮箱">
+        <span class="state1"></span>
+        <br/>
+        <br/>
+        <span style="padding-right:17px;"></span>URL地址：
+        <input type="text" id="url" name="url" placeholder="网址(可选)" maxlength="50">
+        <span class="state1"></span>
+        <br/>
+        <br/>
+        <span style="padding-right:17px;"></span>姓名：
+        <input type="text" id="name" name="name" placeholder="请输入真实姓名">
+        <span class="state1"></span>
+        <br/>
+        <br/>
+        <span style="padding-right:17px;"></span>英文姓名：
+        <input type="text" id="englishName" name="englishName" placeholder="请输入英文姓名">
+        <span class="state1"></span>
+        <br/>
+        <br/>
+        <span style="padding-right:17px;"></span>出生日期：
+        <input type="text" id="date" name="date" placeholder="请输入出生日期">
+        <span class="state1"></span>
+        <br/>
+        <br/>
+        <span style="padding-right:17px;"></span>手机号码：
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="请输入手机号码">
+        <span class="state1"></span>
+        <br/>
+        <br/>
+        <div class="sub">
+            <input type="button" value="提交" id="send" />
+            <input type="reset" id="res" />
+        </div>
+    </form>
+</body>
+
+</html>
