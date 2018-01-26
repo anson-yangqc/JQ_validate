@@ -1,2 +1,3 @@
 # JQ_validate
-校验总结
+### index.html 是原版
+### index.html 是封装后的
