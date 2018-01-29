@@ -1,4 +1,4 @@
-# JQ_validate
+## PACKAGE
 ### JQ_validate.html 校验
 
 ```javascript
