@@ -1,0 +1,93 @@
+<html>
+<head>
+	<meta charset="utf-8" /> 
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-datetimepicker.min.css">
+	<script type="text/javascript" src='jquery.js'></script>
+	<script type="text/javascript" src='bootstrap.min.js'></script>
+	<script type="text/javascript" src='bootstrap-datetimepicker.min.js'></script>
+	<script type="text/javascript" src='bootstrap-datetimepicker.zh-CN.js'></script>
+	<style type="text/css">
+		*{font-size: 12px;}
+	</style>
+</head>
+<body>
+
+<input type="text" class="form_datetime" style="height:  30px;">
+ 
+<script type="text/javascript">
+	//封装 start
+	function DatetimePicker(obj){
+		const {container} = obj
+		this.container = container
+	}
+    DatetimePicker.prototype.set = function(obj){
+    	const {format} = obj
+    	this.container.datetimepicker(format);
+        if(format.readonly){
+            this.container.attr('readonly',true)
+        }
+    }
+    DatetimePicker.prototype.setDate = function(value){//范围
+    	this.container.val(value);
+    	this.container.datetimepicker('update');
+    }
+    DatetimePicker.prototype.getDate = function(){
+    	console.log(this.container.val());
+    }
+    DatetimePicker.prototype.setEndDate = function(obj){//范围
+    	const {endDate} = obj
+    	this.container.datetimepicker('setEndDate', endDate);
+    }
+    DatetimePicker.prototype.setStartDate = function(){//范围
+    	const {starDate} = obj
+    	this.container.datetimepicker('setStartDate', starDate);
+    }
+    DatetimePicker.prototype.show = function(){
+    	this.container.datetimepicker('show');
+    }
+	DatetimePicker.prototype.hide = function(){
+		this.container.datetimepicker('hide');
+    }
+    DatetimePicker.prototype.remove = function(){
+		this.container.datetimepicker('remove');
+    }
+    DatetimePicker.prototype.change = function(obj){
+    	const {onchange} = obj
+		 this.container.datetimepicker().on('change',function(ev){
+		 	onchange(ev)
+		 });
+    }
+	//封装 end
+    
+
+    var datePicker = new DatetimePicker({container:$(".form_datetime")});
+    
+    datePicker.set({
+    	format:{
+            readonly:true
+	    	,todayBtn: true
+	    	,format: "yyyy-mm-dd"
+	    	,language: 'zh-CN'
+	         ,autoclose: true,
+	         weekStart: 1,  
+	         autoclose: true,  
+	         startView: 2,  
+	         minView: 2,  
+	         forceParse: false
+	         //,startDate: '2018-01-10',//范围
+	    	 //endDate: '2018-01-20'//范围
+	    	 ,pickerPosition: 'bottom-right'
+	    }
+    })
+    datePicker.change({
+    	onchange:function(value){
+            console.log(value)
+    	}
+    })
+    
+</script>  
+
+</body>
+</html>
