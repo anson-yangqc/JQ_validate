@@ -29,20 +29,17 @@
             this.container.attr('readonly',true)
         }
     }
-    DatetimePicker.prototype.setDate = function(value){//范围
+    DatetimePicker.prototype.setDate = function(value){
     	this.container.val(value);
     	this.container.datetimepicker('update');
     }
     DatetimePicker.prototype.getDate = function(){
     	console.log(this.container.val());
     }
-    DatetimePicker.prototype.setEndDate = function(obj){//范围
-    	const {endDate} = obj
-    	this.container.datetimepicker('setEndDate', endDate);
-    }
-    DatetimePicker.prototype.setStartDate = function(){//范围
-    	const {starDate} = obj
-    	this.container.datetimepicker('setStartDate', starDate);
+    DatetimePicker.prototype.setRangeDate = function(obj){//范围
+        const {starDate,endDate} = obj
+        this.container.datetimepicker('setStartDate', starDate);
+        this.container.datetimepicker('setEndDate', endDate);
     }
     DatetimePicker.prototype.show = function(){
     	this.container.datetimepicker('show');
