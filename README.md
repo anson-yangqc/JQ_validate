@@ -1,6 +1,5 @@
 # JQ_validate
-### index.html 是原版
-### index.html 是封装后的
+### JQ_validate.html 校验
 
 ```javascript
 验证日期格式的正则表达式：/^[0-9]{4}-[0-1]?[0-9]{1}-[0-3]?[0-9]{1}$/
@@ -10,3 +9,6 @@
 验证邮箱的正则表达式：/\w+([-+\.]?\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/) 
 验证英文的正则表达式： /^[a-zA-Z]+$/;
 ```
+
+### dateTimePicker.html 日期
+### listItem.html 列表
