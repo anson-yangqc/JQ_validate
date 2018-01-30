@@ -6,7 +6,7 @@
   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 </head>
 <body>
-   
+<button id='stop'>终止请求</button>
 <script>
 //封装start
 function doAjax(opts){
@@ -25,21 +25,24 @@ function doAjax(opts){
 		    }
 	}
 	$.extend(true, opts, options);//深拷贝 后面覆盖前面 最终合并到opts对象 
-	$.ajax(opts);
+	return $.ajax(opts);
 }
 //封装end
 
-doAjax({
+var req = doAjax({
 	url : 'a.json'
 	,data:{}
 	,type : 'post'
-	success : function(result) {
+	,success : function(result) {
 		console.log(JSON.stringify(result));
 	}
 	//,dataType : "jsonp"//数据类型为jsonp  
     //,jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数  
 })
 
+$('#stop').click(function(){
+	req.abort();
+})
 
 </script>
 
