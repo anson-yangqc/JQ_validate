@@ -1,12 +1,13 @@
 <html>
 <head>
   <title></title>
+  <script type="text/javascript" src='jquery.js'></script>
 </head>
-<body>
+<body>sdfsdf
   <script type="text/javascript">
     //封装 start
     var addDiv = function(opts){
-        var d = doc.createElement("div");
+        var d = document.createElement("div");
         if(!opts){  return d; }
         lbm(d, opts);//添加class 和 style 
         leb(d, opts.callback);//绑定方法
@@ -26,6 +27,7 @@
                 for(sn in s){
                     o.style[sn] = p.style[sn];
                 }
+                //o.css(o.style)//JQ使用
             }
             else if(n == "className"){
                 o[n] = p[n];
