@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    //封装 start
+    var addDiv = function(opts){
+        var d = doc.createElement("div");
+        if(!opts){  return d; }
+        lbm(d, opts);//添加class 和 style 
+        leb(d, opts.callback);//绑定方法
+        return d;
+    }
+    /**
+     * {object} o, 被添加的DOM对象
+     * {object} p, 属性参数
+     */
+    var lbm = function(o, p){
+        if(!o || typeof p !== "object"){
+            return false;
+        }
+        for(n in p){
+            if(n == "style" && typeof p["style"] == "object"){
+                var s = p["style"];
+                for(sn in s){
+                    o.style[sn] = p.style[sn];
+                }
+            }
+            else if(n == "className"){
+                o[n] = p[n];
+            }else{
+                console.log('no this type!')
+            }
+        }
+    }
+    var leb = function(o, p){
+        if(!o || typeof p !== "object"){
+            return false;
+        }
+        for(n in p){
+            if(typeof p[n] !== "function"){
+                continue;
+            }
+            o.addEventListener(n, p[n]);
+        }
+    }
+    //封装 end
+
+    //调用
+    addDiv({className:"setting",style:{display:"none"}});
+  </script>
+</body>
+</html>
