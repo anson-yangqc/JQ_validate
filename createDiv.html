@@ -13,6 +13,14 @@
         leb(d, opts.callback);//绑定方法
         return d;
     }
+    //或者
+    var addBaseDom = function(type, opts){
+			var l =  doc.createElement(type);
+			if(!opts){	return l;	}
+			lbm(l, opts);
+			leb(l, opts.callback);
+			return l;
+		}
     /**
      * {object} o, 被添加的DOM对象
      * {object} p, 属性参数
