@@ -10,6 +10,12 @@
 验证英文的正则表达式： /^[a-zA-Z]+$/;
 ```
 
+```
+var str = '393800@huawei.com'   
+var reg = /(^[a-zA-Z0-9]*)(@huawei.com$)/;
+if (reg.test(str)) {}else{}
+```
+
 ### dateTimePicker.html 日期
 ### listItem.html 列表
 ### ajax.html ajax 请求
