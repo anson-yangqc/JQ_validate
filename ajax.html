@@ -44,6 +44,21 @@ $('#stop').click(function(){
 	req.abort();
 })
 
+	
+//封装2 start promise例子
+	function doAjax(url,request){
+	var p1 = new Promise(function(reslove,reject){
+		$.post(url,request,function(data){
+			if(data.result.length>0){reslove(data)}else{
+				reject(err)
+			}
+		})
+	})
+}
+//调用
+doAjax('',{}).then()
+	
+//封装2 end
 </script>
 
 </body>
