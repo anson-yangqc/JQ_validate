@@ -1,9 +1,13 @@
-```
 深拷贝
+```
 function deepClone(initalObj) {
         var obj = {};
         obj = JSON.parse(JSON.stringify(initalObj));
         return obj;
     }
-$.extend({},b,true);
+$.extend(true, opts, options);//深拷贝 后面覆盖前面 最终合并到opts对象 
+```
+
+判断是否数组
+```
 ```
