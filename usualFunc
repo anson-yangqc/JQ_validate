@@ -10,4 +10,6 @@ $.extend(true, opts, options);//深拷贝 后面覆盖前面 最终合并到opts
 
 判断是否数组
 ```
+方法1 Object.prototype.toString.call([1,23])
+方法2 Array.isArray([])
 ```
