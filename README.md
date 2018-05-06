@@ -16,6 +16,13 @@ var reg = /(^[a-zA-Z0-9]*)(@huawei.com$)/;
 if (reg.test(str)) {}else{}
 ```
 
+```
+var reg = /^[0-9a-zA-Z]+$/;
+    if (!reg.test(_value)){
+      console.log('只能英文和数字');
+      return false;
+    }
+```
 ### dateTimePicker.html 日期
 ### listItem.html 列表
 ### ajax.html ajax 请求
