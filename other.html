@@ -1,0 +1,21 @@
+<HEAD>
+<TITLE> New Document </TITLE>
+<script>
+function replaceAll(str)
+{
+if(str!=null)
+str = str.replace(/<br \/>/g,"")
+return str;
+}
+</script>
+</HEAD>
+ 
+<BODY>
+&lt;
+<script>
+var str = "&lt;p&gt;<br />↵ &lt;span&gt;IT之家5月6日消息 Epic的CEO同时也是创始人Tim Sweeney在接受媒体采访时表示，3A大作的项目组现在就应该考虑使用光线追踪技术。其中《地铁：逃离》将会是世界上首款搭载实时光线追踪技术的游戏。 &amp;nbsp;&lt;/span&gt;<br />↵&lt;/p&gt;<br />↵&lt;p&gt;<br />↵ &lt;span&gt;其中《地铁：逃离》将会是世界上首款搭载实时光线追踪技术的游戏。&lt;/span&gt;<br />↵&lt;/p&gt;<br />↵&lt;p&gt;<br />↵    &lt;span&gt;其中《地铁：逃离》将会是世界上首款搭载实时光线追踪技术的游戏。&lt;/span&gt;<br />↵&lt;/p&gt;";
+strNew = replaceAll(str);
+alert(strNew);
+</script>
+</BODY>
+</HTML>
