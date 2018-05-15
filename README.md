@@ -27,3 +27,4 @@ var reg = /^[0-9a-zA-Z]+$/;
 ### listItem.html 列表
 ### ajax.html ajax 请求
 ### createDiv.html 创建div 传入class、style、方法
+### other.html 含replaceAll方法
