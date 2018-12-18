@@ -1,0 +1,18 @@
+<script src="moment.js"></script>
+<script src="./moment-with-locales.min.js"></script>
+
+<script>
+	moment.locale('zh-cn');
+	var one = ''
+	one += (moment("20181218", "YYYYMMDD").fromNow());
+	document.write(one)
+</script>
+
+moment("20181218 21:05:01", "YYYYMMDD h:mm:ss").startOf('second').fromNow();  //"6 minutes ago"
+
+moment(1526007949000).format('M-D-YYYY h:mm:ss')  //
+"5-11-2018 11:05:49"
+moment(1526007949000).format('YYYY年MM月DD日 HH:mm:ss')  //"2018年05月11日 11:05:49"
+
+moment("2010-08-07T16:10:00.90").format("YYYY-MM-DD HH:mm:ss")  //"2010-08-07 16:10:00"
+moment("2010-08-07T16:10:00.90").format("YYYY年MM月DD日 HH:mm:ss") //"2010年08月07日 16:10:00"
