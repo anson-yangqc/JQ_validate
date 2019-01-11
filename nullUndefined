@@ -1,0 +1,9 @@
+判断变量是否null
+var exp = null; 
+if (!exp && typeof(exp)!=”undefined” && exp!=0) 
+{ 
+alert(“is null”); 
+}　
+判断比那里是否undefinde
+var one = '12'
+if(one === undefinde){}
