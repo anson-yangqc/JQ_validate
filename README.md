@@ -11,6 +11,10 @@
 ```
 
 ```
+description: window.content && window.content.trim().replace(/<\/?.+?>/g, "").replace(/\r\n/g, "").replace(/\t/g, "").replace(/\n/g, "").replace(/&nbsp;/g, " ") || '',
+```
+
+```
 var str = '393800@huawei.com'   
 var reg = /(^[a-zA-Z0-9]*)(@huawei.com$)/;
 if (reg.test(str)) {}else{}
