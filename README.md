@@ -15,6 +15,13 @@ description: window.content && window.content.trim().replace(/<\/?.+?>/g, "").re
 ```
 
 ```
+替换所有的html标签 .replace(/<\/?.+?>/g,"") 
+将空格替换 .replace(/ /g,"")  .replace(/  /g,"")两个空格
+回车换行符 \r\n
+```
+
+
+```
 var str = '393800@huawei.com'   
 var reg = /(^[a-zA-Z0-9]*)(@huawei.com$)/;
 if (reg.test(str)) {}else{}
