@@ -1,8 +1,8 @@
 var text = "过滤敏感词及不文明用语敏感词";
-	var one = ['敏感词','文明','过'];
+	var one = ['敏感词','文明','过']; //按照数组顺序，每个进行全文匹配，完了再匹配数组里的下一个
 	var two = one.join('|')
 	var re = new RegExp(two,"gi");  //相对于 var re = /敏感词|文明/gi;
 	var output = text.replace(re, function(sMatch){
-	 return sMatch.replace(/./g,"*");
+	 return sMatch.replace(/./g,"*"); //这里return不会终断方法
 	});
 	document.write(output);
