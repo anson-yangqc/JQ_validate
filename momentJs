@@ -24,3 +24,36 @@ this.$moment().format('YYYY/MM/DD h:mm') //2019/04/06 9:21
 时间戳：var timestamp = Date.parse(time); //?1535419062000 （Date.parse() 默认不取毫秒，即后三位毫秒为0）
 moment转时间：this.$moment('2019-04-06T10:40:55.762+80:00').valueOf(); //?1535419062126
 moment转时间戳：this.$moment(1554259255762).format(); //?2018-08-28T09:17:42+08:00
+
+```
+formatDate(date){
+      //适用格式：'2019-04-06T06:01:15.762'  //注意1: 电脑的时区+80:00  //用-可以不带T //时分必须两位 //ie chrome  //ie支持2019/04/06T08:01:15.762 谷歌不支持
+      //适用格式：'2019/04/06 08:01:15.762' //年/月/日 //用/就不带T //时分可以1位 //ie不兼容
+      //适用格式：'2019-04-06 17:35' //年/月/日 //时分可以1位 //ie不兼容
+      date = date.trim().replace(/ /,'T').replace(new RegExp("/","gm"),"-")  //转为 2019-04-06T06:01:15.762 格式，即可统一chrom ie
+      //todo处理时分只有1位
+      let checkTimeArr = date.split('-')
+      if(checkTimeArr[1].length===1){
+        checkTimeArr[1] = '0'+ checkTimeArr[1]
+      }
+      if(checkTimeArr[2].split('T')[0].length === 1){
+        checkTimeArr[2] = '0'+ checkTimeArr[2]
+      }
+      date = checkTimeArr.join('-')
+      const startTime = this.$moment(date).valueOf()
+      const curryTime = this.$moment(new Date()).valueOf()
+      const differ = curryTime-startTime
+      console.log(date)
+      if(differ>0 && differ<=60000){//1分钟内
+        return '刚刚'
+      }else if(differ>60000 && differ<=3600000){ //1到60分钟
+        const res = (differ/1000/60).toFixed(0)
+        return res + '分钟前'
+      }else if(differ>3600000 && differ<=43200000){//1到12小时
+        const res = (differ/1000/60/60).toFixed(0)
+        return res + '小时前'
+      }else {
+        return this.$moment(date).format('YYYY/MM/DD HH:mm')
+      }
+    }
+```
