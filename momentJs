@@ -16,3 +16,11 @@ moment(1526007949000).format('YYYY年MM月DD日 HH:mm:ss')  //"2018年05月11日
 
 moment("2010-08-07T16:10:00.90").format("YYYY-MM-DD HH:mm:ss")  //"2010-08-07 16:10:00"
 moment("2010-08-07T16:10:00.90").format("YYYY年MM月DD日 HH:mm:ss") //"2010年08月07日 16:10:00"
+
+
+//2019-03-08T14:40:55.762+80:00 将格式统一为此格式，才能兼容谷歌/IE（带T、时分需要两位）
+this.$moment().format('YYYY/MM/DD h:mm') //2019/04/06 9:21
+时间：var time = new Date(); //?Tue Aug 28 2018 09:16:06 GMT+0800 (中国标准时间)
+时间戳：var timestamp = Date.parse(time); //?1535419062000 （Date.parse() 默认不取毫秒，即后三位毫秒为0）
+moment转时间：this.$moment('2019-04-06T10:40:55.762+80:00').valueOf(); //?1535419062126
+moment转时间戳：this.$moment(1554259255762).format(); //?2018-08-28T09:17:42+08:00
