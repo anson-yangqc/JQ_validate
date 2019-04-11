@@ -6,3 +6,28 @@ var text = "过滤敏感词及不文明用语敏感词";
 	 return sMatch.replace(/./g,"*"); //这里return不会终断方法
 	});
 	document.write(output);
+
+
+
+showHighLight (result, keyWords) {
+    if (keyWords && keyWords.length > 0) {
+      let resultToLower = result.toLowerCase() // 结果转为小写
+      let keyWordsToLower = keyWords.toLowerCase()// 关键字转为小写
+      let indexAt = 0
+      let tempResult = result
+      let newTempResult = ''
+      const keyLength = keyWords.length // 关键字的长度
+      // 遍历循环判断是否包含关键字
+      while ((indexAt = resultToLower.indexOf(keyWordsToLower)) > -1) {
+        newTempResult = newTempResult + tempResult.substring(0, indexAt) // 截取非搜索关键字的结果
+        let subStrVal = tempResult.substring(indexAt, indexAt + keyLength) // 截取结果的关键字
+        resultToLower = resultToLower.substring(indexAt + keyLength) // 截取关键字后的值
+        let replaceString =
+          '<span class="search-text-red">' + subStrVal + '</span>'
+        newTempResult = newTempResult + replaceString
+        tempResult = tempResult.substring(indexAt + keyLength)// 初始值截取关键字后的值
+      }
+      result = newTempResult + tempResult.substring(indexAt)
+    }
+    return result
+  },
