@@ -1,0 +1,7 @@
+let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+
+var isAndroid = u.indexOf(‘Android’) > -1 || u.indexOf(‘Adr’) > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+<p>点击按钮将文档窗口在水平和垂直方向各滚动 100px 。</p>
+window.scrollBy(100, 100);
