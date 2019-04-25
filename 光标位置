@@ -1,0 +1,35 @@
+this.$nextTick(() => {
+          this.$refs.comDom && this.$refs.comDom.focus() // .setAttribute('autofocus', 'autofocus')
+          if (this.$refs.comDom) {
+            const obj = this.$refs.comDom
+            obj.focus()
+            const len = obj.value.length
+            if (document.selection) {
+              var sel = obj.createTextRange()
+              sel.moveStart('character', len) // 设置开头的位置
+              sel.collapse()
+              sel.select()
+            } else if (
+              typeof obj.selectionStart === 'number' &&
+              typeof obj.selectionEnd === 'number'
+            ) {
+              obj.selectionStart = obj.selectionEnd = len
+            }
+          }
+          if (this.$refs.comDomMobile) {
+            const obj = this.$refs.comDomMobile
+            obj.focus()
+            const len = obj.value.length
+            if (document.selection) {
+              var sel = obj.createTextRange()
+              sel.moveStart('character', len) // 设置开头的位置
+              sel.collapse()
+              sel.select()
+            } else if (
+              typeof obj.selectionStart === 'number' &&
+              typeof obj.selectionEnd === 'number'
+            ) {
+              obj.selectionStart = obj.selectionEnd = len
+            }
+          }
+        })
