@@ -7,3 +7,4 @@ var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 const pageYOffset = window.pageYOffset
  window.scrollBy(0, -pageYOffset)
 window.scrollBy(100, 100);// 100是累积的，不是滚到指定
+window.scrollTo(100,100)
