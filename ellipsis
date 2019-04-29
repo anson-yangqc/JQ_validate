@@ -1,0 +1,16 @@
+<div class="wrap ellipsis">
+	水电费加味精放完了费水电费加味精放完了费水电费加味精放完了费水电费加味精放完了费
+</div>
+<style type="text/css">
+	.wrap{
+		width: 200px; 
+	}
+	.ellipsis{
+		word-break: break-all;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    display: -webkit-box;
+	    -webkit-line-clamp: 2;
+	    -webkit-box-orient: vertical;
+	}
+</style>
