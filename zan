@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="wrap aa">
+	<img src="a.png"  class="changeImg animation" />
+	<span class="change animation2">+1</span>
+</div>
+<style type="text/css">
+.wrap{
+	display: flex;
+}
+.change{
+	width: 21px;height: 21px;display: block;opacity: 0;color: #ccc
+}
+.changeImg{width: 15px;height: 14px;}
+.aa .animation {
+  animation: myFirst 0.3s;
+}
+.aa .animation2 {
+  animation: myFirst2 0.5s;
+}
+@keyframes myFirst2 {
+  0% {
+    transform: translate(0);opacity: 0
+  }
+  50% {
+    transform: translate(0,-10px);opacity: 1
+  }
+  100% {
+    transform: translate(0,-20px);opacity: 0
+    
+  }
+}
+@keyframes myFirst {
+  0% {
+    transform: scale(0.2, 0.2);
+    
+  }
+  50% {
+    transform: scale(0.6, 0.6);
+    
+  }
+  100% {
+    transform: scale(1, 1);
+    
+  }
+}
+</style>
+</body>
+</html>
