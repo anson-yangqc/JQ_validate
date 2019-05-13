@@ -1,0 +1,43 @@
+```
+textarea 随内容增高
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+<style>
+	*{margin:0;padding:0;box-sizing: border-box;}
+	body,html{
+		font-size: 625%
+	}
+	textarea{
+		padding:.05rem;
+		width:2rem;
+	}
+</style>
+<script src='jquery.js'></script>
+<textarea name="" autoHeight style="height:.28rem;" ></textarea>
+<script>
+$(function () {
+    $.fn.autoHeight = function () {
+        function autoHeight(elem) {
+        	if(elem.scrollHeight>26){
+	            elem.style.height = 'auto';
+	            elem.scrollTop = 0;
+	            elem.style.height = elem.scrollHeight + 'px';
+            }
+        }
+        this.each(function () {
+            autoHeight(this);
+            $(this).on('keyup', function () { autoHeight(this); });
+            $(this).on('input', function () { autoHeight(this); });
+        });
+    }
+    $('textarea[autoHeight]').autoHeight();
+})
+</script>
+</body>
+</html>
