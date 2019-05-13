@@ -8,3 +8,15 @@ const pageYOffset = window.pageYOffset
  window.scrollBy(0, -pageYOffset)
 window.scrollBy(100, 100);// 100是累积的，不是滚到指定
 window.scrollTo(100,100)
+
+
+//功能：实现滚动过程 50相对于滚动的速度 start
+window.requestAnimationFrame(step);
+var total = 0
+function step(){
+    total++
+	if(total>30)return false
+    window.scrollBy(0, 50)
+    window.requestAnimationFrame(step);
+}
+//end
