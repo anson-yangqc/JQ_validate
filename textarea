@@ -41,3 +41,16 @@ $(function () {
 </script>
 </body>
 </html>
+
+
+```
+<textarea name="" ref="textarea" autoHeight style="height:28px;" @input="handleInput" ></textarea>
+handleInput(){
+      const elem = this.$refs.textarea
+      if(elem.scrollHeight>26){
+        elem.style.height = 'auto';
+        elem.scrollTop = 0;
+        elem.style.height = elem.scrollHeight + 'px';
+      }
+    }
+```
