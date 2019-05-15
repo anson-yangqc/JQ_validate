@@ -11,12 +11,26 @@ window.scrollTo(100,100)
 
 
 //功能：实现滚动过程 50相对于滚动的速度 start
-window.requestAnimationFrame(step);
-var total = 0
-function step(){
-    total++
-	if(total>30)return false
-    window.scrollBy(0, 50)
-    window.requestAnimationFrame(step);
-}
-//end
+scrollIng(x, y) {
+        //window.scrollTo(x, y)
+        var diff = 200 //每次滚动的距离
+        if(y===0){
+            y= -this.pageYOffset
+            diff = -200 //每次滚动的距离
+        }else{
+            y= y-this.pageYOffset
+        }
+        var total = Math.abs(parseInt(y/diff)) //取50的倍数有多少个
+        var yu = y%diff //最后一次不够50
+        var time = 0
+        function step(){
+            time ++ 
+            if(time === (total+1)){
+                window.scrollBy(0, yu)
+            }else{
+                window.scrollBy(0, diff)
+                window.requestAnimationFrame(step);
+            }
+        }
+        window.requestAnimationFrame(step);
+    }
