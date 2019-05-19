@@ -47,7 +47,7 @@ $(function () {
 <textarea name="" ref="textarea" autoHeight style="height:28px;" @input="handleInput" ></textarea>
 handleInput(){
       const elem = this.$refs.textarea
-      if(elem.scrollHeight>26){
+      if(elem.scrollHeight>26){  //26改成40当第2行删除剩余1行的时候会变成1行，26却保持两行
         elem.style.height = 'auto';
         elem.scrollTop = 0;
         elem.style.height = elem.scrollHeight + 'px';
