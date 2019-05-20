@@ -1,0 +1,10 @@
+hideModal(){
+  this.showFromBot = false
+  document.getElementById('app').style.position = ''
+},
+showTipFromBot(){
+  this.showFromBot = true
+  document.getElementById('app').style.position = 'fixed'
+}
+fixed让他脱离文档流，就没内容滚动；
+zIndex也许要设置
