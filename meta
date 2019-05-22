@@ -5,3 +5,7 @@ box-sizing:content-box //也许会用到这样；如fixedBot的div
 padding-bottom: env(safe-area-inset-bottom);
 padding-bottom:calc(100px +  env(safe-area-inset-bottom));
 margin-bottom: env(safe-area-inset-bottom);
+
+
+当连续快速点击某个数字时，在ios端出现了强制缩放，百度一圈发现了这个属性,
+*{touch-action: manipulation}加上之后很管用
