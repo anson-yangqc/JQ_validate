@@ -34,3 +34,26 @@ scrollIng(x, y) {
       }
       window.requestAnimationFrame(step)
     }
+
+
+```
+监听div使用pc/手机
+document.querySelector('.contentWrap').scrollHeight //div总高
+document.querySelector('.contentWrap').scrollTop //div滚动了多少
+document.querySelector('.contentWrap').clientHeight //div窗口高度
+
+监听window 适用移动
+例子1
+const scrollIsToTop =document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop // window滚动了多少
+//document.documentElement.clientHeight //window窗口高度 document.body.clientHeight《=》（这个会取到内容总高）
+//document.body.scrollHeight //window内容总高度
+const CONDITION = document.body.clientHeight + scrollIsToTop + 20 >= document.body.scrollHeight
+if (CONDITION) {binding.value()}
+例子2
+handleScroll (event) {
+event.preventDefault()
+const scrollIsToTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop // window滚动了多少
+const scrollHeight =  document.documentElement.clientHeight || document.body.scrollHeight //window窗口高度
+if (        scrollIsToTop + scrollHeight + 20 >=        document.body.scrollHeight - 50      ) {        this.loadmore()      }    
+}
+```
