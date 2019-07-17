@@ -1,0 +1,71 @@
+```
+本地读取的图片文件转url地址，
+file为file对象，通过type=file来获取到的即可
+window.URL.createObjectURL(file),
+```
+
+```
+图片缩放
+<canvas id="canvas"></canvas>
+setImgToSize(opt){
+      return new Promise((resolve ,reject)=>{
+        var canvas=document.getElementById("canvas")
+        canvas.setAttribute('width',opt.width)
+        canvas.setAttribute('height',opt.height)
+        var context=canvas.getContext("2d")
+        var image=new Image()
+        image.src=opt.base64Img_Tmp //base64
+        image.setAttribute("crossOrigin",'Anonymous')
+        image.onload=function(e){
+          resolve(drawImage())
+        }
+        function drawImage(){
+          var w=canvas.width
+          var h=canvas.height
+          var sw=w
+          var sh=h
+          context.clearRect(0,0,canvas.width,canvas.height)
+          context.drawImage(image,-sw/2+w/2,-sh/2+h/2,sw,sh)
+          return canvas.toDataURL("image/jpeg", 1.0)
+        }
+      })
+    }
+```
+
+```
+base64上传功能
+this.uploadFile(this.dataURLtoBlob(base64Img))
+uploadFile (imgFile) {
+      //imgFile 为二进制
+      const self = this
+      let formData = new FormData()
+      formData.append(
+        'file',
+        new File([imgFile], this.fileNameVal + '.jpg', {
+          type: 'image/jpeg'
+        })
+      )
+      let config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+       //补充axios传 formdata
+      this.$api.share
+        .cropperUpload(formData, config, this.path)
+        .then(function (res) {
+          self.$Message.success(self.$t('i18n.editImg.SaveSuc'))
+        })
+    }
+    dataURLtoBlob (dataurl) {
+      var arr = dataurl.split(',')
+      var mime = arr[0].match(/:(.*?);/)[1]
+      var bstr = atob(arr[1])
+      var n = bstr.length
+      var u8arr = new Uint8Array(n)
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n)
+      }
+      return new Blob([u8arr], { type: mime })
+    }
+```
