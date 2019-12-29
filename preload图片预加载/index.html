@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <meta lang="utf-8">
+</head>
+
+<body>
+  <script src="js.js"></script>
+  <script>
+    var imgs = ['http://attach.bbs.miui.com/forum/201304/25/195151szk8umd8or8fmfa5.jpg',
+      'http://ps3.tgbus.com/uploadfiles/201101/20110104102301111.jpg',
+      'http://f.hiphotos.baidu.com/zhidao/pic/item/8ad4b31c8701a18bcab7e37a9d2f07082838fea3.jpg',
+      'http://img.3dmgame.com/uploads/images2/news/20191211/1576030363_740120.jpg',
+      'http://attachments.gfan.com/forum/attachments2/201301/29/1256236ax4jx99h0m2amxm.jpg',
+      'http://img4.imgtn.bdimg.com/it/u=1703094090,802953328&fm=26&gp=0.jpg',
+      'http://attach.bbs.miui.com/forum/201503/06/162347xwvgpdfpw5p7rvvv.jpg',
+      'http://attach.bbs.miui.com/forum/201202/18/090658g5shfjyixlhwjyyi.jpg',
+      'http://img2.imgtn.bdimg.com/it/u=1565079182,71447928&fm=26&gp=0.jpg',
+      'http://img.zcool.cn/community/013e555dbd417fa801209e1fe961ac.jpg@1280w_1l_2o_100sh.jpg',
+      'http://a.hiphotos.baidu.com/zhidao/pic/item/10dfa9ec8a136327faed6472918fa0ec08fac76b.jpg'
+    ]
+    let preload = new Preload(imgs, {
+      order: true,
+      each: function (index, url) {
+        console.log('each==:', index, 'url==:', url)
+      },
+      all: function () {
+        console.log('all')
+      }
+    })
+  </script>
+</body>
+
+</html>
